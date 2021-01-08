@@ -51,9 +51,10 @@ namespace Compute.Tests
                 Assert.Equal("True", ultraSSDSupportingSku.LocationInfo[0].ZoneDetails[0].Capabilities[0].Value);
 
                 Assert.NotNull(nonUltraSSDSupportingSku.LocationInfo);
-                // ZoneDetails should not be set for a SKU which does not support ultraSSD. This is because we do not have any
+                // ZoneDetails should be empty for a SKU which does not support ultraSSD. This is because we do not have any
                 // other zonal capability currently.
-                Assert.Null(nonUltraSSDSupportingSku.LocationInfo[0].ZoneDetails);
+                Assert.NotNull(nonUltraSSDSupportingSku.LocationInfo[0].ZoneDetails);
+                Assert.Equal(0, nonUltraSSDSupportingSku.LocationInfo[0].ZoneDetails.Count);
             }
         }
     }
